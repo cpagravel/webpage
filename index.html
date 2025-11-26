@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Was Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: linear-gradient(45deg, #ff0066, #00ff99, #0066ff, #ff9900, #cc00ff, #ff3366);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .main-text {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            background: linear-gradient(45deg, #fff, #ffff00, #ff00ff, #00ffff, #ff0000, #00ff00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradient 3s ease-in-out infinite, bounce 2s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            transform-style: preserve-3d;
+        }
+
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                text-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff, 0 0 80px #00ffff;
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #fff, transparent);
+            border-radius: 50%;
+            animation: sparkleFloat 3s linear infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) rotate(36deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) rotate(324deg) scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff0066, #00ff99, #0066ff, #ff9900);
+            background-clip: border-box;
+            animation: pulseRing 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .subtitle {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInOut 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.3;
+            animation: floatShape 8s linear infinite;
+        }
+
+        .shape:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            background: #ff0066;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .shape:nth-child(2) {
+            left: 20%;
+            animation-delay: -2s;
+            background: #00ff99;
+            width: 30px;
+            height: 30px;
+            transform: rotate(45deg);
+        }
+
+        .shape:nth-child(3) {
+            left: 80%;
+            animation-delay: -4s;
+            background: #0066ff;
+            width: 40px;
+            height: 40px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        @keyframes floatShape {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <div class="pulse-ring"></div>
+        <div class="sparkles" id="sparkles"></div>
+
+        <h1 class="main-text">Christopher was here</h1>
+        <p class="subtitle">✨ Making the web more colorful ✨</p>
+    </div>
+
+    <script>
+        // Create animated sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+
+            document.getElementById('sparkles').appendChild(sparkle);
+
+            // Remove sparkle after animation
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 5000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 300);
+
+        // Add mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            document.body.style.setProperty('--mouse-x', mouseX);
+            document.body.style.setProperty('--mouse-y', mouseY);
+
+            // Create sparkle at mouse position occasionally
+            if (Math.random() < 0.1) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.position = 'fixed';
+                sparkle.style.animation = 'sparkleFloat 1s ease-out forwards';
+                document.body.appendChild(sparkle);
+
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.parentNode.removeChild(sparkle);
+                    }
+                }, 1000);
+            }
+        });
+
+        // Add click effect
+        document.addEventListener('click', () => {
+            const mainText = document.querySelector('.main-text');
+            mainText.style.animation = 'none';
+            setTimeout(() => {
+                mainText.style.animation = 'textGradient 3s ease-in-out infinite, bounce 2s ease-in-out infinite, glow 2s ease-in-out infinite alternate';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
